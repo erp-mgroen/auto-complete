@@ -91,6 +91,7 @@ var NguiAutoCompleteComponent = (function () {
     NguiAutoCompleteComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.autoComplete.source = this.source;
+        this.autoComplete.savedSource = this.source;
         this.autoComplete.pathToData = this.pathToData;
         this.autoComplete.listFormatter = this.listFormatter;
         if (this.autoSelectFirstItem) {
