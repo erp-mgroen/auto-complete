@@ -60,14 +60,16 @@ var NguiAutoComplete = (function () {
         var replacementWord = matches[0];
         var url = this.source.replace(replacementWord, keyword);
         return this.http.get(url)
-            .map(function (resp) {
-            var list = resp.data || resp;
-            if (_this.pathToData) {
-                var paths = _this.pathToData.split(".");
-                paths.forEach(function (prop) { return list = list[prop]; });
-            }
-            return list;
-        });
+          .pipe(
+            map(function (resp) {
+                var list = resp.data || resp;
+                if (_this.pathToData) {
+                  var paths = _this.pathToData.split(".");
+                  paths.forEach(function (prop) { return list = list[prop]; });
+                }
+                return list;
+            })
+          );
     };
     ;
     NguiAutoComplete.decorators = [
